@@ -52,7 +52,6 @@ class DQUserAccuont: NSObject,NSCoding
         aCoder.encodeDouble(expires_in, forKey: "expires_in")
         aCoder.encodeObject(UID, forKey: "UID")
         aCoder.encodeObject(expires_date, forKey: "expires_date")
-
     }
     //解档
     required  init?(coder aDecoder: NSCoder)
