@@ -21,9 +21,8 @@ class DQBaseTableViewController: UITableViewController
         view = vistorView
         //设置代理
         vistorView.vistorViewDelegate = self
-        view.backgroundColor = UIColor.whiteColor()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: UIBarButtonItemStyle.Plain, target: self, action: "vistorViewRegistClick()")
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登陆", style:UIBarButtonItemStyle.Plain, target: self, action: "vistorViewLoginClick()")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: UIBarButtonItemStyle.Plain, target: self, action: "vistorViewRegistClick")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登陆", style:UIBarButtonItemStyle.Plain, target: self, action: "vistorViewLoginClick")
         if  self is DQHomeTabBarController
         {
             vistorView.startRotationAnimation()
@@ -32,7 +31,7 @@ class DQBaseTableViewController: UITableViewController
         }
         else if self is DQMessageTableViewController
         {
-            vistorView.setupVistorView("visitordiscover_image_message", message: "登录后，别人评论你的微博，发给你的消息，都会在这里收到通知")
+          vistorView.setupVistorView("visitordiscover_image_message", message: "登录后，别人评论你的微博，发给你的消息，都会在这里收到通知")
 
         }
         else  if self is  DQDiscoverTabBarController
@@ -61,6 +60,7 @@ extension DQBaseTableViewController : DQVistorViewDelegate
     }
     func  vistorViewLoginClick()
     {
-        print(__FUNCTION__)
+        let  controller = DQOauthViewController()
+        presentViewController(UINavigationController(rootViewController: controller), animated: false, completion: nil)
     }
 }

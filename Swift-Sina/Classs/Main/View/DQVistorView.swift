@@ -61,6 +61,8 @@ class DQVistorView: UIView
     }
     func  setupVistorView(imageName:String,message:String)
     {
+        
+        
         //隐藏房子
         homeView.hidden  = true
         iconView.image = UIImage(named: imageName)
@@ -78,7 +80,10 @@ class DQVistorView: UIView
     }
    func  prepreUI()
    {
+    backgroundColor = UIColor(white: 237.0 / 255, alpha: 1)
+    
     addSubview(iconView)
+    addSubview(coverView)
     addSubview(homeView)
     addSubview(messageLable)
     addSubview(registerButton)
@@ -87,6 +92,8 @@ class DQVistorView: UIView
     iconView.translatesAutoresizingMaskIntoConstraints = false
     //禁用homeView Autoresizing
     homeView.translatesAutoresizingMaskIntoConstraints = false
+    //禁用 coverView Autoresizing
+    coverView.translatesAutoresizingMaskIntoConstraints = false
     //禁用messageLable Autoresizing
     messageLable.translatesAutoresizingMaskIntoConstraints = false
     //禁用loginButton Autoresizing
@@ -104,6 +111,12 @@ class DQVistorView: UIView
     //y
     self.addConstraint(NSLayoutConstraint(item: homeView, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: iconView, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0))
     
+    self.addConstraint(NSLayoutConstraint(item: coverView, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Left, multiplier: 1, constant: 0))
+    
+    self.addConstraint(NSLayoutConstraint(item: coverView, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Right, multiplier: 1, constant: 0))
+    self.addConstraint(NSLayoutConstraint(item: coverView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: iconView, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0))
+    self.addConstraint(NSLayoutConstraint(item: coverView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: messageLable, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: -70))
+    
     // 消息 x
     self.addConstraint(NSLayoutConstraint(item: messageLable, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: iconView, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0))
     //顶部
@@ -113,54 +126,54 @@ class DQVistorView: UIView
     
     //注册按钮  左边
     self.addConstraint(NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: messageLable, attribute: NSLayoutAttribute.Left, multiplier: 1, constant: 0))
-
+    
     //顶部
-  self.addConstraint(NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: messageLable, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 16))
+    self.addConstraint(NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: messageLable, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 16))
     //宽度
     self.addConstraint(NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 100))
     //高度
-   self.addConstraint(NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute,  multiplier: 1, constant: 35))
+    self.addConstraint(NSLayoutConstraint(item: registerButton, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute,  multiplier: 1, constant: 35))
     
     //登录按钮 右边
-   self.addConstraint(NSLayoutConstraint(item:loginButton , attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: messageLable, attribute: NSLayoutAttribute.Right, multiplier: 1, constant: 0))
+    self.addConstraint(NSLayoutConstraint(item:loginButton , attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: messageLable, attribute: NSLayoutAttribute.Right, multiplier: 1, constant: 0))
     //顶部
-   self.addConstraint(NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: messageLable, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 16))
+    self.addConstraint(NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: messageLable, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 16))
     //宽度
     self.addConstraint(NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 100))
     //高度
     self.addConstraint(NSLayoutConstraint(item: loginButton, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 35))
     }
-  private lazy  var  iconView:UIImageView = {
-    //创建imageViw
-    let  imageView = UIImageView()
-    //创建image
-    let imgae = UIImage(named:"visitordiscover_feed_image_smallicon")
-    //为imageView.imagefuzhi
-    imageView.image = imgae
-    //根据图片大小渲染
-    imageView.sizeToFit()
-    //返回图片
-    return  imageView
-    }()
+    private lazy  var  iconView:UIImageView = {
+        //创建imageViw
+        let  imageView = UIImageView()
+        //创建image
+        let imgae = UIImage(named:"visitordiscover_feed_image_smallicon")
+        //为imageView.imagefuzhi
+        imageView.image = imgae
+        //根据图片大小渲染
+        imageView.sizeToFit()
+        //返回图片
+        return  imageView
+        }()
     
-  private  lazy  var  homeView: UIImageView =
+    private  lazy  var  homeView: UIImageView =
     {
-       let  imageView = UIImageView()
+        let  imageView = UIImageView()
         let  image = UIImage(named: "visitordiscover_feed_image_house")
         imageView.image = image
         imageView.sizeToFit()
         return imageView
-    }()
+        }()
     //MARK: - 消息懒加载
     lazy  var  messageLable:UILabel =
     {
-       let  lable = UILabel()
-        lable.text = "关注一些人,看看有什么惊喜,关注一些人,看看有什么惊喜,关注一些人,看看有什么惊喜,关注一些人,看看有什么惊喜,关注一些人,看看有什么惊喜,关注一些人,看看有什么惊喜,"
+        let  lable = UILabel()
+        lable.text = "关注一些人,看看有什么惊喜,关注一些人,看看有什么惊喜,"
         lable.textColor = UIColor.lightGrayColor()
         lable.numberOfLines = 0
         lable.sizeToFit()
         return lable
-    }()
+        }()
     //注册按钮
     lazy  var  registerButton:UIButton = {
         let  button = UIButton()
@@ -170,7 +183,7 @@ class DQVistorView: UIView
         //设置背景
         button.setBackgroundImage(UIImage(named: "common_button_white_disable"), forState:UIControlState.Normal)
         return  button
-    }()
+        }()
     //登陆按钮
     lazy  var  loginButton:UIButton =
     {
@@ -179,6 +192,6 @@ class DQVistorView: UIView
         button.setTitleColor(UIColor.orangeColor(), forState: UIControlState.Normal)
         button.setBackgroundImage(UIImage(named: "common_button_white_disable"), forState:UIControlState.Normal)
         button.sizeToFit()
-       return  button
-    }()
+        return  button
+        }()
     }

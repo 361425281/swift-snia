@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -15,12 +14,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        setupAppearance()
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
       let  TabVC = DQTabBarController()
         window?.rootViewController = TabVC
          window?.makeKeyAndVisible()
         return true
     }
-
+    func  setupAppearance()
+    {
+        UINavigationBar.appearance().tintColor = UIColor.orangeColor()
+    }
 }
 

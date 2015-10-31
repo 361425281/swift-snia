@@ -8,6 +8,7 @@
 
 import UIKit
 
-class DQDiscoverTabBarController: DQBaseTableViewController {
-
+class DQDiscoverTabBarController: DQBaseTableViewController
+{
+   
 }
